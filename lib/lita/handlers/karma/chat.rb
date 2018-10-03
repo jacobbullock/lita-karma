@@ -189,7 +189,8 @@ module Lita::Handlers::Karma
       output = response.matches.map do |match|
         get_term(match[0]).public_send(method_name, user)
       end
-
+      puts output
+      puts output.join("; ")
       response.reply output.join("; ")
     end
 
