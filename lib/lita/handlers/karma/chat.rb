@@ -192,6 +192,7 @@ module Lita::Handlers::Karma
       msg = response.reply output.join("; ")
 
       Lita.logger.debug("--------")
+      Lita.logger.debug(response)
       Lita.logger.debug(output)
       Lita.logger.debug(output.join("; "))
       Lita.logger.debug(msg)
