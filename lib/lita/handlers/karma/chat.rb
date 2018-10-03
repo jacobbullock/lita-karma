@@ -189,9 +189,13 @@ module Lita::Handlers::Karma
       output = response.matches.map do |match|
         get_term(match[0]).public_send(method_name, user)
       end
-      puts output
-      puts output.join("; ")
-      response.reply output.join("; ")
+      msg = response.reply output.join("; ")
+
+      Lita.logger.debug("--------")
+      Lita.logger.debug(output)
+      Lita.logger.debug(output.join("; "))
+      Lita.logger.debug(msg)
+      Lita.logger.debug("--------")
     end
 
     # To ensure that constructs like foo++bar or foo--bar (the latter is
