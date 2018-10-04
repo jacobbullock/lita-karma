@@ -191,11 +191,30 @@ module Lita::Handlers::Karma
       end
       msg = response.reply output.join("; ")
 
+      #[
+      # "@U03QVSMF4 (nerdbot): -7 (-10), linked to: everyone hates you: 0, birdknot: 0, nerdbutt: 9, crazy: 0, jerkbot: -4, nerbot: -2, can’t handle leading whitespace: 0",
+      # "@U15CA21HT (Katie Torres): 475 (469), linked to: saving me from myself: 2, shot in the arm: 1, prolific exclamation points: 1, egg toss champ: 0, hooray rejoice!: 2, let there be light: 0"
+      #]
+      #
+
+      modified_users = []
+      terms_for_user = []
+      output.each do |u|
+        comps = u.split ", "
+        modified_users.push comps.shift
+        terms_for_user.push comps.join(", ")
+      end
+
       Lita.logger.debug("--------")
       Lita.logger.debug(response)
       Lita.logger.debug(output)
       Lita.logger.debug(output.join("; "))
+      Lita.logger.debug("--")
       Lita.logger.debug(msg)
+      Lita.logger.debug(msg["ts"])
+      Lita.logger.debug("--")
+      Lita.logger.debug(modified_users)
+      Lita.logger.debug(terms_for_user)
       Lita.logger.debug("--------")
     end
 
