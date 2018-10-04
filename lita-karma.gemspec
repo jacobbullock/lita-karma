@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "lita-karma"
-  spec.version       = "3.0.2.003"
+  spec.version       = "3.0.2.004"
   spec.authors       = ["Jimmy Cuadra"]
   spec.email         = ["jimmy@jimmycuadra.com"]
   spec.description   = %q{A Lita handler for tracking karma points for arbitrary terms.}

@@ -189,7 +189,7 @@ module Lita::Handlers::Karma
       output = response.matches.map do |match|
         get_term(match[0]).public_send(method_name, user)
       end
-      msg = response.reply output.join("; ")
+      # msg = response.reply output.join("; ")
 
       #[
       # "@U03QVSMF4 (nerdbot): -7 (-10), linked to: everyone hates you: 0, birdknot: 0, nerdbutt: 9, crazy: 0, jerkbot: -4, nerbot: -2, can’t handle leading whitespace: 0",
@@ -198,12 +198,12 @@ module Lita::Handlers::Karma
       #
 
       modified_users = []
-      terms_for_user = []
       output.each do |u|
         comps = u.split ", "
         modified_users.push comps.shift
-        terms_for_user.push comps.join(", ")
       end
+
+      msg = response.reply modified_users.join("\n")
 
       Lita.logger.debug("--------")
       Lita.logger.debug(response)
@@ -214,8 +214,9 @@ module Lita::Handlers::Karma
       Lita.logger.debug(msg["ts"])
       Lita.logger.debug("--")
       Lita.logger.debug(modified_users)
-      Lita.logger.debug(terms_for_user)
       Lita.logger.debug("--------")
+
+      response.reply "#{msg["ts"]}$_BNR_TS_$#{output.join("\n")}"
     end
 
     # To ensure that constructs like foo++bar or foo--bar (the latter is
