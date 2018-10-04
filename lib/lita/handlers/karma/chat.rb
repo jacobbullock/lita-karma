@@ -40,11 +40,20 @@ module Lita::Handlers::Karma
     end
 
     def link(response)
+      Lita.logger.debug("++++++++")
+      Lita.logger.debug(response)
+      Lita.logger.debug(response.matches)
+
       response.matches.each do |match|
         term1 = get_term(match[0])
         term2 = get_term(match[1])
 
+        Lita.logger.debug(term1)
+        Lita.logger.debug(term2)
+
         result = term1.link(term2)
+
+        Lita.logger.debug(result)
 
         case result
         when Integer
@@ -55,6 +64,8 @@ module Lita::Handlers::Karma
           response.reply t("already_linked", source: term2, target: term1)
         end
       end
+
+      Lita.logger.debug("++++++++")
     end
 
     def unlink(response)
