@@ -104,6 +104,11 @@ module Lita::Handlers::Karma
     private
 
     def define_dynamic_routes(pattern)
+
+      Lita.logger.debug("++++++++")
+      Lita.logger.debug("define_dynamic_routes: #{pattern}")
+
+
       self.class.route(
         %r{(#{pattern})\+\+#{token_terminator.source}},
         :increment,
@@ -135,6 +140,9 @@ module Lita::Handlers::Karma
         command: true,
         help: { t("help.unlink_key") => t("help.unlink_value") }
       )
+
+      Lita.logger.debug("self.class.routes: #{self.class.routes}")
+      Lita.logger.debug("++++++++")
     end
 
     def define_static_routes
