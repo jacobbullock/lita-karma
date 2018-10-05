@@ -226,6 +226,7 @@ module Lita::Handlers::Karma
 
       Lita.logger.debug("--------")
       Lita.logger.debug(response)
+      Lita.logger.debug(response.try(:ts))
       Lita.logger.debug(output)
       Lita.logger.debug(output.join("; "))
       Lita.logger.debug("--")
